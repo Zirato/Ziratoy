@@ -1,0 +1,78 @@
+// Зашифровка.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+//
+
+#include <iostream>
+#include <windows.h>
+#include <vector>
+#include <string>
+#include <random>
+#include <chrono>
+using namespace std;
+
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+
+int rand(int l, int r) {
+    uniform_int_distribution<int> uid(l, r);
+    return uid(rng);
+}
+
+int main()
+{
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    string s, s1, s2, s3, s4, s5, ss, sss;
+    vector <string> sv(10);
+    sv[0] = "АпЦК)ХГв8ЖRaДь<Э!CЙvY>gБЛъР^BVж 6{ЧGЪPbУнмсxЬ\"r0J4йеwkyZВСNlШшЗ5X/AeхUjfQqpцt-;?юWnщMИкEЫр(zзLiтdаcD721&О3oПhои\'чдЯ|эЕл_+Oы`,фmЮ=T#яЩ$H.]НуuТs[IK9М*F@%бS\\г:Ф}~";
+    sv[1] = "АЙ<ПИ@ыОшвуЪВ)iLwеM=УetК!ШCю_-qБя/йUаz670JД4a$тЕjмY\'Ф^m>ГНy кжrHR5Zlц[2+dъсKf?бЮv\"чOнРxп,FXAg1D:ЦPЛХ;рkWх`%\\|VpЩoьbЯ.S]ЗBЧЫhЖNu3Ьщ{эQиз#cгnоGE9*МТд8IС&ЭлфTs(}~";
+    sv[2] = "А_ДBп5нИWЙТбzjщsЮ\"%Уfсxg{!СaивU*@8эЯrE=?,bмFtБЛQю1wх2йНЭОВ:ыЖV&]фiYRГ\'уDжЦКЫTJ>^I#Ь6keKз;[ЗGSLl(е`\\дXЕ.qoт|чPc$)ЪШvшA7yd-Фuяа/Zоь<ЩONMpМРhH9ъ43П Cлр0цгкХ+mnЧ}~";
+    sv[3] = "9еIщжб\"ц_Г?ЛыФlя,А3+Vi;ьKШRv4zн/hПМt<jЗЙCСЕYгb#:ЦсТLЩИшвДaОSэeOw%*@DoчоXдcdзи&Э2EA.\')$1йУ6РЮ-sК`а(pygmп{8NЧ~мfНюуn}^rВUZMquЬ0=JЖ7[5>|лkхHP\\ TрЯЪFкЫХ]BтGxQ!WфБъ";
+    sv[4] = ";QEъ|Sеш[7Жp)нв<WdZmUЮУз\'1хz6Й&u/ACЯD\"ШsV_ХRИibvпHР3оOдhЬIю@KблМ4КТLFкДаЗaВрщfсw0eй{+rФэx*lG`2ь=}ЦMц$(ЕXЛ>kфg^Чq.!ч% coы?jn,:Н-J5ОЫ#\\СBжyЩм89]tЪуГYTNЭАБПPяи~гт";
+    sv[5] = "НOк\'J(QщLfMаЭЫеY2DЩ@У,мФВS&Ъ1#Z{rh !Зфv0ЙnoXAз/И58Ю~яj*)]ХРd4Спs\"azЬC:|гeBЧ6уE;.сЯUА7RоОМшрцmy=чъH-ьWЦК$pKГБFI<ПЖx}ы3q`NлвД_PTwb%^kдтюVй>?+9жЕlGэбЛc[gШituихн\\Т";
+    sv[6] = ",;_Ш\\Юц2ФGйhwS=j$TyбYkaы6|уW?iБз!ЫАu~t7Qsщ4(lCIgЗГ^1лOpвОV93Я+>Еv#ХгfяmсЛ-ЩqКь[нKxюЧИТжНмcP`ит.%RzXУъMчПх]\'JСDЦLп{nфBeF&шд@/E*Uкr8\"рМHoе}ЭbРN)оZЖAЬ:dД0а<эЙЪ 5В";
+    sv[7] = "Ш<н\\ЮЬхVэ?ЕЩ%ЙCA&1йGХu9,vыМиw]QBц.)Ж {ГмLFzHfPЫНn~Э[ВЯ6p(БПтOеО\"ЗДс;\'жзаWSTgUdвщZti5бдKaфYЪmлk-К7_=>xjьЛСкРИ}l#ЧrIMoD4qгу@чУя`sN*пЦ^!XФJe:о+$chрb/EА|R0ю82y3шТъ";
+    sv[8] = ",):Z\"kпм{ыаЛ5ЦgV=щзЙВФM;РхЫ`-bс|YЗИi*йК](Е.0ю>Б/НП_ЧХд9WнsфЩI\'XtGи!eШjvуn<SДГ#AтRz1@fQьш 28яB&ОоmpdoкАв~wcu4ълТPгLМЭE?эЮOбеhУya^[3ЯЪ+qTЬц\\J}6rNжС7K$lUЖDHCрxчF%";
+    sv[9] = "r%Ай-$8эСЪБtяЫu2тP#е 5иJ4CТкъ\'m1И~vНХ=Mбb?рЧNH.Щ_ыB(`pнжЬQs\\7ГВ)6МlЛЕTiЗ}Дc>;kЭaхУ3ЦVE/A[сцзО9oьeSWП+,щ!Lа0КGгШqЮXOKnп@zЯвд*ZоRYwhчмd^fш{Uю:флgФР|DFjЖ&у]xI\"yЙ<";
+
+    int k = rand(0, 9), l = rand(4, 13), f = rand(3, 12);
+    getline(cin, s);
+    for (int i = 0; i < s.length(); ++i) {
+        int in = int(s[i]);
+        if (in > 0) {
+            in -= 32;
+        }
+        else {
+            in += 65 + 95;
+        }
+        in = (in + i) % 159;
+        if (i % f == 0)
+            ss.push_back(char(rand(32, 126)));
+        ss.push_back(sv[k][in]);
+    }
+
+    for (int j = 0; j < l; ++j) {
+        for (int i = j; i < ss.length(); ) {
+            if (j == 0 || j + 1 == l) {
+                sss.push_back(ss[i]);
+            }
+            else {
+                int in = i + (l * 2 - 3) - 2 * (j - 1) - 1;
+                sss.push_back(ss[i]);
+                if (in < ss.length())
+                    sss.push_back(ss[in]);
+            }
+            i = i + (l * 2) - 2;
+        }
+    }
+    cout << sss << "\n" << k << l - 4 << f - 3 << "\n";
+}
+
+// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
+// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
+
+// Советы по началу работы 
+//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
+//   2. В окне Team Explorer можно подключиться к системе управления версиями.
+//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
+//   4. В окне "Список ошибок" можно просматривать ошибки.
+//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
+//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
